@@ -1,0 +1,30 @@
+.navigation {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #003580;
+    height: 50px;
+}
+
+.nav-container {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    max-width: 1136px;
+    ;
+    justify-content: space-between;
+}
+
+.logo {
+    font-weight: 20px;
+    color: #fff;
+    font-weight: 500;
+}
+
+.login-register button {
+    background-color: #fff;
+    color: #003580;
+    padding: 5px 10px;
+    margin-right: 10px;
+    border: none;
+}
