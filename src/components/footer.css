@@ -1,0 +1,20 @@
+.footer {
+    width: 100%;
+    padding: 30px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.footer-wrapper {
+    width: 100%;
+    max-width: 1136px;
+    display: flex;
+    justify-content: space-between;
+}
+
+li {
+    color: #003580;
+    list-style: none;
+    cursor: pointer;
+}

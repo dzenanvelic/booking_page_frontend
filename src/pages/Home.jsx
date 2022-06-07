@@ -1,7 +1,9 @@
 import React from 'react'
+import Footer from '../components/Footer'
 import Header from '../components/Header'
 import Nav from '../components/Nav'
 import './home.css'
+import Mail from './Mail'
 function Home() {
     return (
         <div className='home'>
@@ -84,7 +86,7 @@ function Home() {
                     <div className="guests-love-wrapper">
                         <div className="guests-love-item">
                             <img className="guest-love-image" src={process.env.PUBLIC_URL + "/images/image10.jpg"} alt="img10" />
-                            <div className="home-guests-love-container">
+                            <div className="home-guests-love-container-inner">
                                 <h3 className="home-guests-love-title">Appartmento Bennicampi</h3>
                                 <h4 className="home-guests-love-desc">Rome</h4>
                                 <h5 className="home-guests-love-price">Starting from $120</h5>
@@ -93,7 +95,7 @@ function Home() {
                         </div>
                         <div className="guests-love-item">
                             <img className="guest-love-image" src={process.env.PUBLIC_URL + "/images/image11.jpg"} alt="img10" />
-                            <div className="home-guests-love-container">
+                            <div className="home-guests-love-container-inner">
                                 <h3 className="home-guests-love-title">VIP Residence Budapest</h3>
                                 <h4 className="home-guests-love-desc">Budapest</h4>
                                 <h5 className="home-guests-love-price">Starting from $89</h5>
@@ -102,7 +104,7 @@ function Home() {
                         </div>
                         <div className="guests-love-item">
                             <img className="guest-love-image" src={process.env.PUBLIC_URL + "/images/image12.jpg"} alt="img10" />
-                            <div className="home-guests-love-container">
+                            <div className="home-guests-love-container-inner">
                                 <h3 className="home-guests-love-title">Flora Chiado Apartments</h3>
                                 <h4 className="home-guests-love-desc">Lisbon</h4>
                                 <h5 className="home-guests-love-price">Starting from $220</h5>
@@ -111,7 +113,7 @@ function Home() {
                         </div>
                         <div className="guests-love-item">
                             <img className="guest-love-image" src={process.env.PUBLIC_URL + "/images/image13.jpg"} alt="img10" />
-                            <div className="home-guests-love-container">
+                            <div className="home-guests-love-container-inner">
                                 <h3 className="home-guests-love-title">BNB Holder Amazing Sol</h3>
                                 <h4 className="home-guests-love-desc">Madrid</h4>
                                 <h5 className="home-guests-love-price">Starting from $117</h5>
@@ -122,6 +124,8 @@ function Home() {
                 </div>
 
             </div>
+            <Mail />
+            <Footer />
         </div>
     )
 }
