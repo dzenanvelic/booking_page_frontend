@@ -6,7 +6,7 @@ import { DateRange } from 'react-date-range';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { format } from 'date-fns'
 import { faBed, faCalendar, faCar, faJetFighter, faMagnifyingGlass, faPerson, faShapes, faTaxi, } from '@fortawesome/free-solid-svg-icons'
-function Header() {
+function Header({ type }) {
     const [pickdate, setPickdate] = useState(false)
     const [option, setOption] = useState(false)
     const [date, setDate] = useState([
@@ -64,65 +64,69 @@ function Header() {
                     </div>
 
                 </div>
-                <h2 className="headtitle">A lifetime of discounts It`s Genius.</h2>
-                <p className='subtitle'>Get revarded for your travels-unlock instanat savings of 10% and more with a free LastMinute booking account.</p>
+                {type !== "lists" && <>
 
-                <button className="signin">
-                    Sign in/Register
-                </button>
+                    <h2 className="headtitle">A lifetime of discounts It`s Genius.</h2>
+                    <p className='subtitle'>Get revarded for your travels-unlock instanat savings of 10% and more with a free LastMinute booking account.</p>
 
-                <div className="all-inputs">
-                    <div className="input-1">
-                        <FontAwesomeIcon icon={faBed} />
-                        <span><input type="text" placeholder='Where are you going?' /></span>
-                    </div>
-                    <div className="input-2" onClick={(handlePickDate)}>
-                        <FontAwesomeIcon icon={faCalendar} />
-                        <span>{`${format(date[0].startDate, "MM/dd/yyyy")} to ${format(date[0].endDate, "MM/dd/yyyy")}`}</span>
-                        {pickdate && <DateRange className='date-range'
-                            editableDateInputs={true}
-                            onChange={item => setDate([item.selection])}
-                            moveRangeOnFirstSelection={false}
-                            ranges={date}
-                        />}
-                    </div>
-                    <div onClick={hideOptions} className="input-3">
-                        <FontAwesomeIcon icon={faPerson} />
-                        <span>{optionItems.adult} adults - {optionItems.children} childrens - {optionItems.room} room/s</span>
-                        {option && <div className="optionsContainer">
-                            <div className="optionItem">
-                                <span>Adults</span>
-                                <div className="buttons-container">
-                                    <button disabled={optionItems.adult <= 1} onClick={() => handleOption("adult", "d")} className="optionButton">-</button>
-                                    <span className='option-span'>{optionItems.adult}</span>
-                                    <button onClick={() => handleOption("adult", "i")} className="optionButton">+</button>
+                    <button className="signin">
+                        Sign in/Register
+                    </button>
+
+                    <div className="all-inputs">
+                        <div className="input-1">
+                            <FontAwesomeIcon icon={faBed} />
+                            <span><input type="text" placeholder='Where are you going?' /></span>
+                        </div>
+                        <div className="input-2" onClick={(handlePickDate)}>
+                            <FontAwesomeIcon icon={faCalendar} />
+                            <span>{`${format(date[0].startDate, "MM/dd/yyyy")} to ${format(date[0].endDate, "MM/dd/yyyy")}`}</span>
+                            {pickdate && <DateRange className='date-range'
+                                editableDateInputs={true}
+                                onChange={item => setDate([item.selection])}
+                                moveRangeOnFirstSelection={false}
+                                ranges={date}
+                            />}
+                        </div>
+                        <div onClick={hideOptions} className="input-3">
+                            <FontAwesomeIcon icon={faPerson} />
+                            <span>{optionItems.adult} adults - {optionItems.children} childrens - {optionItems.room} room/s</span>
+                            {option && <div className="optionsContainer">
+                                <div className="optionItem">
+                                    <span>Adults</span>
+                                    <div className="buttons-container">
+                                        <button disabled={optionItems.adult <= 1} onClick={() => handleOption("adult", "d")} className="optionButton">-</button>
+                                        <span className='option-span'>{optionItems.adult}</span>
+                                        <button onClick={() => handleOption("adult", "i")} className="optionButton">+</button>
+                                    </div>
                                 </div>
-                            </div>
-                            <div className="optionItem">
-                                <span>Childrens</span>
-                                <div className="buttons-container">
-                                    <button disabled={optionItems.children <= 0} onClick={() => handleOption("children", "d")} className="optionButton">-</button>
-                                    <span className='option-span'>{optionItems.children}</span>
-                                    <button onClick={() => handleOption("children", "i")} className="optionButton">+</button>
+                                <div className="optionItem">
+                                    <span>Childrens</span>
+                                    <div className="buttons-container">
+                                        <button disabled={optionItems.children <= 0} onClick={() => handleOption("children", "d")} className="optionButton">-</button>
+                                        <span className='option-span'>{optionItems.children}</span>
+                                        <button onClick={() => handleOption("children", "i")} className="optionButton">+</button>
+                                    </div>
                                 </div>
-                            </div>
-                            <div className="optionItem">
-                                <span >Rooms</span>
-                                <div className="buttons-container">
-                                    <button disabled={optionItems.room <= 1} onClick={() => handleOption("room", "d")} className="optionButton">-</button>
-                                    <span className='option-span'>{optionItems.room}</span>
-                                    <button onClick={() => handleOption("room", "i")} className="optionButton">+</button>
+                                <div className="optionItem">
+                                    <span >Rooms</span>
+                                    <div className="buttons-container">
+                                        <button disabled={optionItems.room <= 1} onClick={() => handleOption("room", "d")} className="optionButton">-</button>
+                                        <span className='option-span'>{optionItems.room}</span>
+                                        <button onClick={() => handleOption("room", "i")} className="optionButton">+</button>
+                                    </div>
+
                                 </div>
 
-                            </div>
+                            </div>}
+                        </div>
+                        <div className="input-4">
+                            <button className='search-button'>Search <span><FontAwesomeIcon icon={faMagnifyingGlass} /></span></button>
+                        </div>
 
-                        </div>}
                     </div>
-                    <div className="input-4">
-                        <button className='search-button'>Search <span><FontAwesomeIcon icon={faMagnifyingGlass} /></span></button>
-                    </div>
+                </>}
 
-                </div>
             </div>
         </div>
     )
