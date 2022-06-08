@@ -126,3 +126,57 @@
     border: none;
     border-radius: 5px;
 }
+
+.slider {
+    position: sticky;
+
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.slider-wrapper {
+    width: 80%;
+
+    height: 80vh;
+}
+
+.slider-wrapper>img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+
+}
+
+.arrow-left {
+    position: absolute;
+    top: 50%;
+    left: 30px;
+    font-size: 30px;
+    color: lightgray;
+    cursor: pointer;
+}
+
+.arrow-right {
+    position: absolute;
+    top: 50%;
+    right: 30px;
+    font-size: 30px;
+    color: lightgray;
+    cursor: pointer;
+}
+
+
+.arrow-exit {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 30px;
+    color: lightgray;
+    cursor: pointer;
+}

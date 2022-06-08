@@ -1,17 +1,44 @@
 import './hotel.css'
-import React from 'react'
+import React, { useState } from 'react'
 import Nav from '../components/Nav'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
 import Mail from '../pages/Mail'
 import { hotelPics } from '../data'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faLocationDot } from '@fortawesome/free-solid-svg-icons'
+import { faArrowAltCircleLeft, faArrowAltCircleRight, faCircleXmark, faLocationDot } from '@fortawesome/free-solid-svg-icons'
 function Hotel() {
+    const [open, setOpen] = useState(false)
+    const [slideNumber, setSlidenumber] = useState(0)
 
+    const handleOpen = (i) => {
+        setSlidenumber(i)
+        setOpen(true)
+    }
+
+    const changeSlide = (direction) => {
+        let newSlideNumber;
+        if (direction === "l") {
+            newSlideNumber = slideNumber === 0 ? +hotelPics.length - 1 : slideNumber - 1
+        }
+        else {
+            newSlideNumber = slideNumber === +hotelPics.length - 1 ? 0 : slideNumber + 1
+        }
+        setSlidenumber(newSlideNumber)
+    }
+    console.log("slideNo", slideNumber)
     return (<>
+        {open && <div className="slider">
+            <FontAwesomeIcon className="arrow-left" onClick={() => changeSlide("l")} icon={faArrowAltCircleLeft} />
+            <FontAwesomeIcon className="arrow-right" onClick={() => changeSlide("r")} icon={faArrowAltCircleRight} />
+            <FontAwesomeIcon className="arrow-exit" icon={faCircleXmark} onClick={() => setOpen(false)} />
+            <div className="slider-wrapper">
+                <img src={hotelPics[slideNumber].url} alt="" />
+            </div>
+        </div>}
         <Nav />
         <Header type="list" />
+
         <div className='hotel-single'>
             <div className="hotel-wrapper">
                 <button className="reserve-or-book">Reserve or book now!</button>
@@ -27,10 +54,10 @@ function Hotel() {
 
 
                 <div className="hotel-pics-wrapper">
-                    {hotelPics.map((pic) => {
+                    {hotelPics.map((pic, i) => {
                         return <div key={pic.id} className="image-wrapper">
 
-                            <img src={pic.url} alt={pic.url} />
+                            <img src={pic.url} alt={pic.url} onClick={() => handleOpen(i)} />
                         </div>
 
 
