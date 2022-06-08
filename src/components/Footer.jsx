@@ -117,7 +117,7 @@ function Footer() {
 
                     </li>
                     <li class="footer-navigation-link">
-                        About Booking.com
+                        About LastMinuteBooking.com
                     </li>
                     <li class="footer-navigation-link">
 
@@ -182,6 +182,10 @@ function Footer() {
                 </ul>
 
 
+            </div>
+            <div class="copyright_text">
+                Copyright © 1996–{new Date().getFullYear()}
+                LastMinuteBooking.com™. All rights reserved.
             </div>
         </div>
 

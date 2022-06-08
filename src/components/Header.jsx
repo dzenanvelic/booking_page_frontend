@@ -6,14 +6,18 @@ import { DateRange } from 'react-date-range';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { format } from 'date-fns'
 import { faBed, faCalendar, faCar, faJetFighter, faMagnifyingGlass, faPerson, faShapes, faTaxi, } from '@fortawesome/free-solid-svg-icons'
+import { useNavigate } from 'react-router-dom';
 function Header({ type }) {
+    const navigate = useNavigate()
     const [pickdate, setPickdate] = useState(false)
     const [option, setOption] = useState(false)
+    const [destination, setDestination] = useState("")
     const [date, setDate] = useState([
         {
             startDate: new Date(),
             endDate: new Date(),
-            key: 'selection'
+            key: 'selection',
+
         }
     ])
     const [optionItems, setOptionsItems] = useState({
@@ -37,6 +41,9 @@ function Header({ type }) {
     //hide and open adults, childrens... menu
     const hideOptions = () => {
         setOption(!option)
+    }
+    const handleNavigate = () => {
+        navigate('/hotels', { state: { destination, optionItems, date } })
     }
     return (
         <div className='header'>
@@ -76,21 +83,22 @@ function Header({ type }) {
                     <div className="all-inputs">
                         <div className="input-1">
                             <FontAwesomeIcon icon={faBed} />
-                            <span><input type="text" placeholder='Where are you going?' /></span>
+                            <span><input onChange={(e) => setDestination(e.target.value)} type="text" placeholder='Where are you going?' /></span>
                         </div>
-                        <div className="input-2" onClick={(handlePickDate)}>
+                        <div className="input-2" >
                             <FontAwesomeIcon icon={faCalendar} />
-                            <span>{`${format(date[0].startDate, "MM/dd/yyyy")} to ${format(date[0].endDate, "MM/dd/yyyy")}`}</span>
+                            <span onClick={(handlePickDate)}>{`${format(date[0].startDate, "MM/dd/yyyy")} to ${format(date[0].endDate, "MM/dd/yyyy")}`}</span>
                             {pickdate && <DateRange className='date-range'
                                 editableDateInputs={true}
                                 onChange={item => setDate([item.selection])}
                                 moveRangeOnFirstSelection={false}
                                 ranges={date}
+                                minDate={new Date()}
                             />}
                         </div>
-                        <div onClick={hideOptions} className="input-3">
+                        <div className="input-3">
                             <FontAwesomeIcon icon={faPerson} />
-                            <span>{optionItems.adult} adults - {optionItems.children} childrens - {optionItems.room} room/s</span>
+                            <span onClick={hideOptions} >{optionItems.adult} adults - {optionItems.children} childrens - {optionItems.room} room/s</span>
                             {option && <div className="optionsContainer">
                                 <div className="optionItem">
                                     <span>Adults</span>
@@ -121,7 +129,7 @@ function Header({ type }) {
                             </div>}
                         </div>
                         <div className="input-4">
-                            <button className='search-button'>Search <span><FontAwesomeIcon icon={faMagnifyingGlass} /></span></button>
+                            <button onClick={handleNavigate} className='search-button'>Search <span><FontAwesomeIcon icon={faMagnifyingGlass} /></span></button>
                         </div>
 
                     </div>
