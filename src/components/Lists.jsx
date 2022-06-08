@@ -10,7 +10,7 @@ function Lists() {
     const [date, setDate] = useState(location.state.date)
     const [destination, setDestination] = useState(location.state.destination)
     const [optionItems, setOptionItems] = useState(location.state.optionItems)
-    console.log("location", location)
+    // console.log("location", location)
 
     const handleDate = () => [
         setPickdate(!pickdate)
