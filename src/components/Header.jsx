@@ -74,7 +74,7 @@ function Header({ type }) {
                 {type !== "lists" && <>
 
                     <h2 className="headtitle">A lifetime of discounts It`s Genius.</h2>
-                    <p className='subtitle'>Get revarded for your travels-unlock instanat savings of 10% and more with a free LastMinute booking account.</p>
+                    <p className='subtitle'>Get rewarded for your travels-unlock instanat savings of 10% and more with a free LastMinute booking account.</p>
 
                     <button className="signin">
                         Sign in/Register
