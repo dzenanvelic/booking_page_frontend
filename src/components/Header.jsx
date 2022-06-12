@@ -6,7 +6,7 @@ import { DateRange } from 'react-date-range';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { format } from 'date-fns'
 import { faBed, faCalendar, faCar, faJetFighter, faMagnifyingGlass, faPerson, faShapes, faTaxi, } from '@fortawesome/free-solid-svg-icons'
-import { useNavigate } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 function Header({ type }) {
     const navigate = useNavigate()
     const [pickdate, setPickdate] = useState(false)
@@ -49,25 +49,50 @@ function Header({ type }) {
         <div className='header'>
             <div className="header-container">
                 <div className="features">
-                    <div className="feature active">
-                        <span><FontAwesomeIcon icon={faBed} /></span>
-                        <span className='feature-item'>Stays</span>
+                    <div className="feature ">
+                        <NavLink to='/' className={({ isActive }) =>
+                            isActive ? "active" : ""
+                        }>
+                            <span><FontAwesomeIcon icon={faBed} /></span>
+                            <span className='feature-item'>Stays</span>
+                        </NavLink>
+
                     </div>
                     <div className="feature">
-                        <span><FontAwesomeIcon icon={faJetFighter} /></span>
-                        <span className='feature-item'>Flights</span>
+                        <NavLink to='/flights' className={({ isActive }) =>
+                            isActive ? "active" : ""
+                        }>
+                            <span><FontAwesomeIcon icon={faJetFighter} /></span>
+                            <span className='feature-item'>Flights</span>
+                        </NavLink>
+
                     </div>
                     <div className="feature">
-                        <span ><FontAwesomeIcon icon={faCar} /></span>
-                        <span className='feature-item'>Car rentals</span>
+                        <NavLink to='/car/rentals' className={({ isActive }) =>
+                            isActive ? "active" : ""
+                        }>
+                            <span ><FontAwesomeIcon icon={faCar} /></span>
+                            <span className='feature-item'>Car rentals</span>
+                        </NavLink>
+
                     </div>
                     <div className="feature">
-                        <span ><FontAwesomeIcon icon={faShapes} /></span>
-                        <span className='feature-item'>Attractions</span>
+                        <NavLink to='/attractions' className={({ isActive }) =>
+                            isActive ? "active" : ""
+                        }>
+                            <span ><FontAwesomeIcon icon={faShapes} /></span>
+                            <span className='feature-item'>Attractions</span>
+                        </NavLink>
+
                     </div>
                     <div className="feature">
-                        <span className='feature-item'><FontAwesomeIcon icon={faTaxi} /></span>
-                        <span className='feature-item'>Airport taxis</span>
+                        <NavLink to='/taxis/airport' className={({ isActive }) =>
+                            isActive ? "active" : ""
+                        }>
+                            <span className='feature-item'><FontAwesomeIcon icon={faTaxi} /></span>
+                            <span className='feature-item'>Airport taxis</span>
+                        </NavLink>
+
                     </div>
 
                 </div>

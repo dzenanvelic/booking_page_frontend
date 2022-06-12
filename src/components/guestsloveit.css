@@ -2,6 +2,7 @@
     width: 100%;
     max-width: 1136px;
 
+
 }
 
 .guests-love-wrapper {
@@ -24,10 +25,15 @@
 }
 
 .guests-love-item {
+    padding: 3px;
     width: 100%;
+    min-height: 320px;
+
     flex: 1;
     height: 300px;
     color: gray;
+    -webkit-box-shadow: 4px 4px 12px 0px rgba(128, 128, 128, 0.54);
+    box-shadow: 4px 4px 12px 0px rgba(128, 128, 128, 0.54);
 
 }
 
@@ -41,6 +47,14 @@
     background-color: #003580;
     color: #fff;
     border-radius: 5px;
-    padding-top: 5px;
+
     border: none;
+    width: 30px;
+    height: 30px;
+}
+
+
+
+.small-rate {
+    padding-left: 10px;
 }

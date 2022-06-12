@@ -4,17 +4,27 @@ import './lists.css'
 import SearchListsresults from './SearchListsresults'
 import { format } from 'date-fns'
 import { DateRange } from 'react-date-range';
+import { useFetch } from '../hooks/useFetch'
+import Loading from '../components/Loading'
 function Lists() {
+
     const location = useLocation()
     const [pickdate, setPickdate] = useState(false)
     const [date, setDate] = useState(location.state.date)
     const [destination, setDestination] = useState(location.state.destination)
     const [optionItems, setOptionItems] = useState(location.state.optionItems)
+    const [min, setMin] = useState(null)
+    const [max, setMax] = useState(null)
     // console.log("location", location)
+    const { data, loading, error, reFetch } = useFetch(`/hotels?city=${destination}&min=${min || 0}&max=${max || 999}`)
 
     const handleDate = () => [
         setPickdate(!pickdate)
     ]
+
+    const handleChange = () => {
+        reFetch()
+    }
     return (
         <div className='lists'>
             <div className="lists-container">
@@ -42,12 +52,12 @@ function Lists() {
                     <div className="options-box">
                         <div className="options-item">
                             <label >Min price <small> per night</small></label>
-                            <input type="number" />
+                            <input onChange={e => setMin(e.target.value)} type="number" />
 
                         </div>
                         <div className="options-item">
                             <label >Max price <small> per night</small></label>
-                            <input type="number" />
+                            <input onChange={e => setMax(e.target.value)} type="number" />
 
                         </div>
                         <div className="options-item">
@@ -71,28 +81,21 @@ function Lists() {
 
 
                     </div>
-                    <button className='option-search-button'>Search</button>
+                    <button onClick={handleChange} className='option-search-button'>Search</button>
+                </div>
+                <div className="search-results-panel">
+
+                    {loading ? <Loading /> : <>{data &&
+                        data.map((item) => {
+                            return <SearchListsresults item={item} />
+                        })
+
+                    }
+                    </>
+                    }
+
                 </div>
 
-                <div className="search-results-panel">
-                    <SearchListsresults />
-                    <SearchListsresults />
-                    <SearchListsresults />
-                    <SearchListsresults />
-                    <SearchListsresults />
-                    <SearchListsresults />
-                    <SearchListsresults />
-                    <SearchListsresults />
-                    <SearchListsresults />
-                    <SearchListsresults />
-                    <SearchListsresults />
-                    <SearchListsresults />
-                    <SearchListsresults />
-                    <SearchListsresults />
-                    <SearchListsresults />
-                    <SearchListsresults />
-                    <SearchListsresults />
-                </div>
             </div>
         </div>
 

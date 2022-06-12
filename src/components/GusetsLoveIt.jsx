@@ -17,10 +17,10 @@ function GusetsLoveIt() {
                         return <div key={i} className="guests-love-item">
                             <img className="guest-love-image" src={process.env.PUBLIC_URL + "/images/image6.jpg"} alt="img10" />
                             <div className="home-guests-love-container-inner">
-                                <h3 className="home-guests-love-title">{item.title}</h3>
+                                <h3 className="home-guests-love-title">{item.name}</h3>
                                 <h4 className="home-guests-love-desc">{item.city}</h4>
-                                <h5 className="home-guests-love-price">{item.cheapestPrice}</h5>
-                                {item.rating && <span><button className="home-guests-love-rating">{item.rating}</button>Exceptional</span>}
+                                <h5 className="home-guests-love-price">Starting from ${item.cheapestPrice}</h5>
+                                {item.rating && <span><button className="home-guests-love-rating">{item.rating}</button><small className='small-rate'>Exceptional</small></span>}
                             </div>
                         </div>
                     })}
